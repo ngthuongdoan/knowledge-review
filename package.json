@@ -1,0 +1,20 @@
+{
+  "name": "knowledge-review",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && yarn dev",
+    "server": "cd server && yarn dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngthuongdoan/knowledge-review.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngthuongdoan/knowledge-review/issues"
+  },
+  "homepage": "https://github.com/ngthuongdoan/knowledge-review#readme",
+  "description": ""
+}
