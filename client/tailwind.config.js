@@ -8,7 +8,11 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        'overlay': 'rgba(0,0,0,0.3)'
+      }
+    },
   },
   variants: {
     extend: {},
