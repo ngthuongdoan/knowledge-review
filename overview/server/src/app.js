@@ -1,13 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-const httpStatus = require("http-status");
-const helmet = require("helmet");
-const xss = require("xss-clean");
-const compression = require("compression");
-const routes = require("./routes");
-const ApiError = require("./utils/ApiError");
-const { errorConverter, errorHandler } = require("./middlewares/error");
-const morgan = require("./config/morgan");
+const express = require('express');
+const cors = require('cors');
+const httpStatus = require('http-status');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const compression = require('compression');
+const routes = require('./routes');
+const ApiError = require('./utils/ApiError');
+const { errorConverter, errorHandler } = require('./middlewares/error');
+const morgan = require('./config/morgan');
 
 const app = express();
 
@@ -23,12 +23,12 @@ app.use(xss());
 app.use(compression());
 
 app.use(cors());
-app.options("*", cors());
+app.options('*', cors());
 
-app.use("/", routes);
+app.use('/', routes);
 
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, "Not found"));
+  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
 });
 
 // convert error to ApiError, if needed

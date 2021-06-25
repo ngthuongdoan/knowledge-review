@@ -6,7 +6,12 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon src/index.js",
-    "start": "node ."
+    "start": "node .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check **/*.js",
+    "prettier:fix": "prettier --write **/*.js",
+    "prepare": "cd ../.. && husky install"
   },
   "keywords": [],
   "author": "",
@@ -18,14 +23,23 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "http-status": "^1.5.0",
+    "mongoose": "^5.12.14",
     "morgan": "^1.10.0",
     "winston": "^3.3.3",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
     "husky": "^6.0.0",
     "jest": "^27.0.5",
     "nodemon": "^2.0.7",
+    "prettier": "^2.3.1",
     "supertest": "^6.1.3"
   }
 }

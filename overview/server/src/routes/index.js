@@ -1,10 +1,10 @@
-const express = require("express");
-const todoRoutes = require("./todo.route");
+const express = require('express');
+const todoRoutes = require('./todo.route');
 
 const router = express.Router();
 const defaultRoutes = [
   {
-    path: "/todo",
+    path: '/todo',
     routes: todoRoutes,
   },
 ];

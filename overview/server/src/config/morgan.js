@@ -1,7 +1,7 @@
-const morgan = require("morgan");
-const logger = require("./logger");
+const morgan = require('morgan');
+const logger = require('./logger');
 
-morgan.token("message", (req, res) => res.locals.errorMessage || "");
+morgan.token('message', (req, res) => res.locals.errorMessage || '');
 
 const successResponseFormat = `:method :url :status - :response-time ms`;
 const errorResponseFormat = `:method :url :status - :response-time ms - message :message`;
