@@ -1,19 +1,21 @@
 <template>
   <div class="w-1/2">
-    <AppTodo></AppTodo>
+    <DashboardTemplate :todos="todos"></DashboardTemplate>
   </div>
 </template>
 
 <script>
-import AppTodo from "~/components/AppTodo";
+import DashboardTemplate from '@/components/templates/DashboardTemplate/DashboardTemplate';
 
 export default {
-  components:{
-    AppTodo
+  components: {
+    DashboardTemplate,
   },
-  data() {
-    return {}
+  async asyncData(context) {
+    const todos = await context.app.$axios.$get('/todo');
+    return {
+      todos,
+    };
   },
-}
+};
 </script>
-
