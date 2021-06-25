@@ -1,23 +1,13 @@
 const express = require('express');
+const todoController = require('../controllers/todo.controller');
 
 const router = express.Router();
-const todos = [
-  {
-    id: 1,
-    content: 'Welcome to the world',
-    date: new Date(),
-    isDone: false,
-  },
-  {
-    id: 2,
-    content: 'Welcome to the world, again',
-    date: new Date(),
-    isDone: false,
-  },
-];
+router.route('/').get(todoController.getTodos).post(todoController.createTodo);
 
-router.route('/').get((req, res) => {
-  res.status(200).send(todos);
-});
+router
+  .route(':id')
+  .get(todoController.getTodo)
+  .patch(todoController.updateTodo)
+  .delete(todoController.deleteTodo);
 
 module.exports = router;
