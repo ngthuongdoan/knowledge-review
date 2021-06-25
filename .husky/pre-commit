@@ -1,6 +1,2 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-
-pwd
-cd overview/server && yarn lint:fix
-pwd

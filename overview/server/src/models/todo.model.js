@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 const status = require('../config/status');
+const ObjectId = mongoose.Schema.ObjectId;
 
 const todoSchema = mongoose.Schema({
-  name: {
+  id: {
+    type: ObjectId,
+  },
+  title: {
     type: String,
     required: true,
     trim: true,
@@ -26,6 +30,6 @@ const todoSchema = mongoose.Schema({
 /**
  * @typedef Todo
  */
-const Todo = mongoose.model('Todo', todoSchema);
+const Todo = mongoose.model('Todo', todoSchema, 'Todo');
 
 module.exports = Todo;
