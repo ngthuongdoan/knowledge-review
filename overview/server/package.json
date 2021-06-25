@@ -11,7 +11,8 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
-    "prepare": "cd ../.. && husky install"
+    "prepare": "cd ../.. && husky install",
+    "commit": "cz"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,7 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "commitizen": "^4.2.4",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
