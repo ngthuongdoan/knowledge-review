@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest -i --watchAll",
+    "coverage": "jest -i --coverage",
+    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "start": "node .",
     "lint": "eslint .",
@@ -34,6 +37,7 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.23",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.29.0",

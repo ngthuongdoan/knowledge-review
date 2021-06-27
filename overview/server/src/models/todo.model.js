@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const status = require('../config/status');
-const ObjectId = mongoose.Schema.ObjectId;
 
 const todoSchema = mongoose.Schema({
   title: {
