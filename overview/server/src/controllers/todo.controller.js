@@ -13,7 +13,7 @@ const getTodos = async (req, res) => {
 };
 
 const getTodo = async (req, res) => {
-  const todo = await todoService.getTodoById(req.params.todoId);
+  const todo = await todoService.getTodoById(req.params.id);
   if (!todo) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Todo not found');
   }
@@ -21,12 +21,12 @@ const getTodo = async (req, res) => {
 };
 
 const updateTodo = async (req, res) => {
-  const todo = await todoService.updateTodoById(req.params.todoId, req.body);
+  const todo = await todoService.updateTodoById(req.params.id, req.body);
   res.send(todo);
 };
 
 const deleteTodo = async (req, res) => {
-  await todoService.deleteTodoById(req.params.todoId);
+  await todoService.deleteTodoById(req.params.id);
   res.status(httpStatus.NO_CONTENT).send();
 };
 

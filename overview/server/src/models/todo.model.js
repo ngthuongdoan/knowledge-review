@@ -3,9 +3,6 @@ const status = require('../config/status');
 const ObjectId = mongoose.Schema.ObjectId;
 
 const todoSchema = mongoose.Schema({
-  id: {
-    type: ObjectId,
-  },
   title: {
     type: String,
     required: true,

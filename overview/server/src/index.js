@@ -2,19 +2,14 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const app = require('./app');
 const logger = require('./config/logger');
+const config = require('./config/config');
 
 let server;
 
-const mongooseOptions = {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
-
-mongoose.connect(process.env.MONGODB_URL, mongooseOptions).then(() => {
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
-  server = app.listen(process.env.port, () => {
-    logger.info(`Listening to port ${process.env.port}`);
+  server = app.listen(config.port, () => {
+    logger.info(`Listening to port ${config.port}`);
   });
 });
 
