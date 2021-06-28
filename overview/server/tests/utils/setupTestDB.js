@@ -2,15 +2,9 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const config = require('../../src/config/config');
 
-const mongooseOptions = {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
-
 const setupTestDB = () => {
   beforeAll(async () => {
-    await mongoose.connect(config.MONGODB_URL, mongooseOptions);
+    await mongoose.connect(config.mongoose.url, config.mongoose.options);
   });
 
   beforeEach(async () => {
