@@ -1,9 +1,11 @@
-const Joi = require('joi');
-const status = require('../config/status');
+import Joi, { CustomHelpers, LanguageMessages } from 'joi';
+import { status } from '../config/status';
 
-const objectId = (value, helpers) => {
+const objectId = (value: string, helpers: CustomHelpers) => {
   if (!value.match(/^[0-9a-fA-F]{24}$/)) {
-    return helpers.message('"{{#label}}" must be a valid mongo id');
+    return helpers.message(<LanguageMessages>{
+      messages: '"{{#label}}" must be a valid mongo id',
+    });
   }
   return value;
 };
@@ -57,10 +59,4 @@ const deleteTodo = {
   }),
 };
 
-module.exports = {
-  createTodo,
-  getTodo,
-  getTodos,
-  updateTodo,
-  deleteTodo,
-};
+export { createTodo, getTodo, getTodos, updateTodo, deleteTodo };

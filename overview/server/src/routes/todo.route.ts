@@ -1,9 +1,9 @@
-const express = require('express');
-const todoController = require('../controllers/todo.controller');
-const validate = require('../middlewares/validate');
-const { todoValidation } = require('../validations');
+import { Router } from 'express';
+import todoController from '../controllers/todo.controller';
+import validate from '../middlewares/validate';
+import { todoValidation } from '../validations';
 
-const router = express.Router();
+const router = Router();
 router
   .route('/')
   .get(validate(todoValidation.getTodos), todoController.getTodos)
@@ -15,4 +15,4 @@ router
   .patch(validate(todoValidation.updateTodo), todoController.updateTodo)
   .delete(validate(todoValidation.deleteTodo), todoController.deleteTodo);
 
-module.exports = router;
+export default router;

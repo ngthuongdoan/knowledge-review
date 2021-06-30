@@ -1,8 +1,8 @@
-const httpStatus = require('http-status');
-const { Todo } = require('../models');
-const ApiError = require('../utils/ApiError');
+import httpStatus from 'http-status';
+import { Todo } from '../models';
+import ApiError from '../utils/ApiError';
 
-const createTodo = async (todoBody) => {
+const createTodo = async (todoBody: any) => {
   const todo = await Todo.create(todoBody);
   return todo;
 };
@@ -12,11 +12,11 @@ const queryTodos = async () => {
   return todos;
 };
 
-const getTodoById = async (id) => {
+const getTodoById = async (id: string) => {
   return Todo.findById(id);
 };
 
-const updateTodoById = async (id, updateBody) => {
+const updateTodoById = async (id: string, updateBody: any) => {
   const todo = await getTodoById(id);
   if (!todo) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Todo not found');
@@ -26,12 +26,7 @@ const updateTodoById = async (id, updateBody) => {
   return todo;
 };
 
-/**
- * Delete user by id
- * @param {ObjectId} userId
- * @returns {Promise<User>}
- */
-const deleteTodoById = async (id) => {
+const deleteTodoById = async (id: string) => {
   const todo = await getTodoById(id);
   if (!todo) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Todo not found');
@@ -40,10 +35,4 @@ const deleteTodoById = async (id) => {
   return todo;
 };
 
-module.exports = {
-  createTodo,
-  getTodoById,
-  queryTodos,
-  updateTodoById,
-  deleteTodoById,
-};
+export { createTodo, getTodoById, queryTodos, updateTodoById, deleteTodoById };

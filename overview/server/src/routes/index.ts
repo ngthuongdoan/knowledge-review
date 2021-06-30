@@ -1,7 +1,7 @@
-const express = require('express');
-const todoRoutes = require('./todo.route');
+import { Router } from 'express';
+import todoRoutes from './todo.route';
 
-const router = express.Router();
+const router = Router();
 const defaultRoutes = [
   {
     path: '/todo',
@@ -13,4 +13,4 @@ defaultRoutes.forEach((r) => {
   router.use(r.path, r.routes);
 });
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const status = require('../config/status');
+import mongoose, { Schema } from 'mongoose';
+import { status } from '../config/status';
 
-const todoSchema = mongoose.Schema({
+const todoSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -30,11 +30,11 @@ const todoSchema = mongoose.Schema({
 todoSchema.set('toJSON', {
   virtuals: true,
   versionKey: false,
-  transform: function (doc, ret) {
+  transform: function (doc: mongoose.Document, ret: any) {
     delete ret._id;
     delete ret._v;
   },
 });
 const Todo = mongoose.model('Todo', todoSchema, 'Todo');
 
-module.exports = Todo;
+export default Todo;

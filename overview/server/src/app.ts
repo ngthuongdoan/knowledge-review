@@ -1,11 +1,12 @@
-const express = require('express');
-const cors = require('cors');
-const httpStatus = require('http-status');
-const helmet = require('helmet');
-const xss = require('xss-clean');
-const compression = require('compression');
-const routes = require('./routes');
-const ApiError = require('./utils/ApiError');
+// const express = require('express');
+import express, { Request, Response, NextFunction } from 'express';
+import routes from './routes';
+import httpStatus from 'http-status';
+import cors from 'cors';
+import helmet from 'helmet';
+import xss from 'xss-clean';
+import compression from 'compression';
+import ApiError from './utils/ApiError';
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const morgan = require('./config/morgan');
 
@@ -23,11 +24,11 @@ app.use(xss());
 app.use(compression());
 
 app.use(cors());
-app.options('*', cors());
+// app.options('*', cors());
 
 app.use('/', routes);
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
 });
 
@@ -37,4 +38,4 @@ app.use(errorConverter);
 // handle error
 app.use(errorHandler);
 
-module.exports = app;
+export default app;
