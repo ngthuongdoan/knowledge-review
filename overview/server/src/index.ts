@@ -1,10 +1,12 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const app = require('./app');
-const logger = require('./config/logger');
-const config = require('./config/config');
+import dotenv from 'dotenv';
+dotenv.config();
+import { Server } from 'http';
+import app from './app';
+import config from './config/config';
+import logger from './config/logger';
+import mongoose from 'mongoose';
 
-let server;
+let server: Server;
 
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
@@ -24,7 +26,7 @@ const exitHandler = () => {
   }
 };
 
-const unexpectedErrorHandler = (error) => {
+const unexpectedErrorHandler = (error: NodeJS.UncaughtExceptionListener) => {
   logger.error(error);
   exitHandler();
 };
