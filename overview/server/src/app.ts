@@ -1,4 +1,3 @@
-// const express = require('express');
 import express, { Request, Response, NextFunction } from 'express';
 import routes from './routes';
 import httpStatus from 'http-status';
@@ -7,8 +6,8 @@ import helmet from 'helmet';
 import xss from 'xss-clean';
 import compression from 'compression';
 import ApiError from './utils/ApiError';
-const { errorConverter, errorHandler } = require('./middlewares/error');
-const morgan = require('./config/morgan');
+import { errorConverter, errorHandler } from './middlewares/error';
+import * as morgan from './config/morgan';
 
 const app = express();
 

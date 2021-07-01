@@ -1,6 +1,7 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const config = require('../../src/config/config');
+import * as mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
+import config from '@app/config/config';
 
 const setupTestDB = () => {
   beforeAll(async () => {
@@ -10,14 +11,15 @@ const setupTestDB = () => {
   beforeEach(async () => {
     await Promise.all(
       Object.values(mongoose.connection.collections).map(async (collection) =>
-        collection.deleteMany()
+        collection.deleteMany({})
       )
     );
   });
 
   afterAll(async () => {
-    await mongoose.disconnect();
+    await mongoose.connection.dropDatabase();
+    await mongoose.connection.close();
   });
 };
 
-module.exports = setupTestDB;
+export default setupTestDB;

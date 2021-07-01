@@ -1,6 +1,6 @@
-const faker = require('faker');
-const Todo = require('../../src/models/todo.model');
-const status = require('../../src/config/status');
+import faker from 'faker';
+import Todo from '@app/models/todo.model';
+import { status } from '@app/config/status';
 
 const todoOne = {
   title: faker.lorem.lines(1),
@@ -15,12 +15,7 @@ const todoTwo = {
   status: faker.random.objectElement(status, 'value'),
 };
 
-const insertTodos = async (todos) => {
-  await Todo.insertMany(todos.map((todo) => ({ ...todo })));
+const insertTodos = async (todos: object[]) => {
+  await Todo.insertMany(todos.map((todo: object) => ({ ...todo })));
 };
-
-module.exports = {
-  todoOne,
-  todoTwo,
-  insertTodos,
-};
+export { todoOne, todoTwo, insertTodos };

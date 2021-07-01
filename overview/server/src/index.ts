@@ -26,7 +26,7 @@ const exitHandler = () => {
   }
 };
 
-const unexpectedErrorHandler = (error: NodeJS.UncaughtExceptionListener) => {
+const unexpectedErrorHandler = (error: any) => {
   logger.error(error);
   exitHandler();
 };

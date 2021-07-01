@@ -1,7 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Model, Schema } from 'mongoose';
 import { status } from '../config/status';
 
-const todoSchema = new Schema({
+const todoSchema: Schema = new Schema({
   title: {
     type: String,
     required: true,
@@ -35,6 +35,6 @@ todoSchema.set('toJSON', {
     delete ret._v;
   },
 });
-const Todo = mongoose.model('Todo', todoSchema, 'Todo');
+const Todo: Model<any> = mongoose.model('Todo', todoSchema, 'Todo');
 
 export default Todo;

@@ -1,10 +1,8 @@
-const request = require('supertest');
-const faker = require('faker');
-const httpStatus = require('http-status');
-const app = require('../../src/app');
-const setupTestDB = require('../utils/setupTestDB');
-const { Todo } = require('../../src/models');
-const { insertTodos, todoOne, todoTwo } = require('../mocks/todo.mock');
+import request from 'supertest';
+import httpStatus from 'http-status';
+import app from '@app/app';
+import setupTestDB from '../utils/setupTestDB';
+import { insertTodos, todoOne, todoTwo } from '../mocks/todo.mock';
 
 setupTestDB();
 
