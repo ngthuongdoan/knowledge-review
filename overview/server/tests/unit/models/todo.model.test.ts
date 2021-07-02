@@ -1,6 +1,6 @@
 import faker from 'faker';
-import Todo from '@app/models/todo.model';
-import { status } from '@app/config/status';
+import Todo from '../../../src/models/todo.model';
+import { status } from '../../../src/config/status';
 
 describe('Todo model', () => {
   describe('Todo validation', () => {
@@ -21,42 +21,18 @@ describe('Todo model', () => {
     });
 
     test('should correct validate a valid todo', async () => {
-      console.log(Todo, todo);
-
-      await expect(await Todo.create(todo)).resolves.toBeUndefined();
-      // let error = null;
-      // try {
-      //   const testTodo = await Todo.create({ ...todo });
-      //   await testTodo.validate();
-      // } catch (e) {
-      //   error = e;
-      // }
-      // expect(error).toBeNull();
+      await expect(new Todo(todo).validate()).resolves.toBeUndefined();
     });
 
-    // test('show give a error if status is not the valid values', async () => {
-    //   todo.status = 'failed';
-    //   let error = null;
-    //   try {
-    //     const testTodo = await Todo.create({ ...todo });
-    //     await testTodo.validate();
-    //   } catch (e) {
-    //     error = e;
-    //   }
-    //   expect(error).not.toBeNull();
-    // });
+    test('show give a error if status is not the valid values', async () => {
+      todo.status = 'failed';
+      await expect(new Todo(todo).validate()).rejects.toThrow();
+    });
 
-    // test('show give a error if missing required fields', async () => {
-    //   todo.title = '';
-    //   todo.description = '';
-    //   let error = null;
-    //   try {
-    //     const testTodo = await Todo.create({ ...todo });
-    //     await testTodo.validate();
-    //   } catch (e) {
-    //     error = e;
-    //   }
-    //   expect(error).not.toBeNull();
-    // });
+    test('show give a error if missing required fields', async () => {
+      todo.title = '';
+      todo.description = '';
+      await expect(new Todo(todo).validate()).rejects.toThrow();
+    });
   });
 });

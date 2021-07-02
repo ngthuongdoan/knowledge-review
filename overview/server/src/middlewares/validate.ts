@@ -4,6 +4,7 @@ import pick from '../utils/pick';
 import ApiError from '../utils/ApiError';
 import { Schema } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
+import logger from '@appconfig/logger';
 
 /**
  * @param  {} schema
@@ -24,6 +25,7 @@ const validate =
       const errorMessage = error.details
         .map((details) => details.message)
         .join(', ');
+      logger.info(errorMessage);
       return next(new ApiError(httpStatus.BAD_REQUEST, errorMessage));
     }
     Object.assign(req, value);

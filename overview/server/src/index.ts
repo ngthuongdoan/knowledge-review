@@ -5,6 +5,7 @@ import app from './app';
 import config from './config/config';
 import logger from './config/logger';
 import mongoose from 'mongoose';
+import ApiError from '@apputils/ApiError';
 
 let server: Server;
 
@@ -26,7 +27,7 @@ const exitHandler = () => {
   }
 };
 
-const unexpectedErrorHandler = (error: any) => {
+const unexpectedErrorHandler = (error: ApiError | Error) => {
   logger.error(error);
   exitHandler();
 };

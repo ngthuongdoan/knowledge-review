@@ -1,6 +1,6 @@
 import faker from 'faker';
-import Todo from '@app/models/todo.model';
-import { status } from '@app/config/status';
+import Todo from '../../src/models/todo.model';
+import { status } from '../../src/config/status';
 
 const todoOne = {
   title: faker.lorem.lines(1),
@@ -16,6 +16,6 @@ const todoTwo = {
 };
 
 const insertTodos = async (todos: object[]) => {
-  await Todo.insertMany(todos.map((todo: object) => ({ ...todo })));
+  return await Todo.insertMany(todos.map((todo: object) => ({ ...todo })));
 };
 export { todoOne, todoTwo, insertTodos };

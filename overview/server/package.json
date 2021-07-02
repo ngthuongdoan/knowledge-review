@@ -4,13 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "debug": "ts-node src/index.ts",
     "generate": "tsc",
+    "generate:watch": "tsc -w",
     "test": "jest -i --colors --verbose --runInBand --detectOpenHandles",
     "test:watch": "jest -i --watchAll",
     "coverage": "jest -i --coverage",
     "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
-    "dev": "yarn generate && cross-env NODE_ENV=development nodemon .",
-    "start": "node .",
+    "dev": "cross-env NODE_ENV=development nodemon .",
+    "start": "cross-env NODE_ENV=production node .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
@@ -67,6 +69,7 @@
     "prettier": "^2.3.1",
     "supertest": "^6.1.3",
     "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
   },
   "config": {

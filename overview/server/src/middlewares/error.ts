@@ -2,9 +2,14 @@ import httpStatus from 'http-status';
 import mongoose from 'mongoose';
 import logger from '../config/logger';
 import ApiError from '../utils/ApiError';
-import { ErrorRequestHandler } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
-const errorConverter: ErrorRequestHandler = (err, req, res, next) => {
+const errorConverter = (
+  err: ApiError | any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   let error = err;
   if (!(error instanceof ApiError)) {
     const statusCode =
@@ -18,7 +23,12 @@ const errorConverter: ErrorRequestHandler = (err, req, res, next) => {
 };
 
 // eslint-disable-next-line no-unused-vars
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const errorHandler = (
+  err: ApiError | any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   let { statusCode, message } = err;
   if (!err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
@@ -34,7 +44,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   };
 
   logger.error(err);
-
   res.status(statusCode).send(response);
 };
 

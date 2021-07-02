@@ -3,6 +3,8 @@ import { Todo } from '../models';
 import ApiError from '../utils/ApiError';
 
 const createTodo = async (todoBody: any) => {
+  console.log('Create Todo Service');
+
   const todo = await Todo.create(todoBody);
   return todo;
 };

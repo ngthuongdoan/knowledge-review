@@ -1,7 +1,7 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
-import config from '@app/config/config';
+import config from '../../src/config/config';
 
 const setupTestDB = () => {
   beforeAll(async () => {
