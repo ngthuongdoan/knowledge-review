@@ -8,7 +8,6 @@ router
   .route('/')
   .get(validate(todoValidation.getTodos), todoController.getTodos)
   .post(validate(todoValidation.createTodo), todoController.createTodo);
-
 router
   .route('/:id')
   .get(validate(todoValidation.getTodo), todoController.getTodo)

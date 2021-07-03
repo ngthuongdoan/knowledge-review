@@ -35,6 +35,7 @@ todoSchema.set('toJSON', {
     delete ret._v;
   },
 });
+
 const Todo: Model<any> = mongoose.model('Todo', todoSchema, 'Todo');
 
 export default Todo;

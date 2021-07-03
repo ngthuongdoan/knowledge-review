@@ -3,9 +3,13 @@ import httpStatus from 'http-status';
 import ApiError from '../utils/ApiError';
 import { todoService } from '../services';
 
-const createTodo: RequestHandler = async (req, res) => {
-  const todo = await todoService.createTodo(req.body);
-  res.status(httpStatus.CREATED).send(todo);
+const createTodo: RequestHandler = async (req, res, next) => {
+  try {
+    const todo = await todoService.createTodo(req.body);
+    res.status(httpStatus.CREATED).send(todo);
+  } catch (error) {
+    next(new ApiError(httpStatus.UNPROCESSABLE_ENTITY, error.message));
+  }
 };
 
 const getTodos: RequestHandler = async (_, res) => {

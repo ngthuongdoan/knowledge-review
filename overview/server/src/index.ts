@@ -5,7 +5,7 @@ import app from './app';
 import config from './config/config';
 import logger from './config/logger';
 import mongoose from 'mongoose';
-import ApiError from '@apputils/ApiError';
+import ApiError from './utils/ApiError';
 
 let server: Server;
 
