@@ -1,4 +1,4 @@
-FROM node:alpine as base
+FROM node:alpine
 
 LABEL "author"="ngthuongdoan"
 LABEL "author.email"="ngthuongdoan@gmail.com"
@@ -8,16 +8,12 @@ RUN mkdir /usr/node-server && chown -R node:node /usr/node-server
 
 WORKDIR /usr/node-server
 
-COPY package.json yarn.lock ./
+COPY ./ ./
 RUN yarn install --pure-lockfile
-
-# Copy static files
-COPY /dist /dist ./
-# Copy static files
-# COPY src/public dist/src/public
+RUN yarn generate
 
 USER node
 COPY --chown=node:node . .
 
-EXPOSE 3000
+EXPOSE 5000
 # CMD ["dist/src/index.js"]
