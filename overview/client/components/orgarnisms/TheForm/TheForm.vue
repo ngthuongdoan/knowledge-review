@@ -45,8 +45,8 @@ export default {
       this.$emit('closeModal');
     },
     async addTodo() {
-      this.$axios.$post('/todo', this.todo);
-      // console.log(this.todo);
+      await this.$axios.$post('/todo', this.todo);
+      await this.$nuxt.refresh();
       this.closeModal();
     },
   },
