@@ -15,7 +15,9 @@
   >
     <div class="flex flex-col flex-grow">
       <the-title :title="todo.title"></the-title>
-      <the-subtitle :subtitle="todo.time"></the-subtitle>
+      <the-subtitle
+        :subtitle="$dayjs(todo.time).format('DD-MM-YYYY hh:mm')"
+      ></the-subtitle>
       <the-subtitle :subtitle="todo.description"></the-subtitle>
     </div>
     <button class="rounded-full border-2 w-5 h-5 border-black"></button>
