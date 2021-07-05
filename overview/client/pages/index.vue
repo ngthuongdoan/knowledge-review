@@ -1,6 +1,6 @@
 <template>
   <div class="w-1/2">
-    <DashboardTemplate :todos="todos"></DashboardTemplate>
+    <dashboard-template :todos="todos"></dashboard-template>
   </div>
 </template>
 

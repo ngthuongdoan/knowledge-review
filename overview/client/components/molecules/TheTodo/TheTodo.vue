@@ -14,17 +14,17 @@
     "
   >
     <div class="flex flex-col flex-grow">
-      <TheTitle :title="todo.title"></TheTitle>
-      <TheSubtitle :subtitle="todo.time"></TheSubtitle>
-      <TheSubtitle :subtitle="todo.description"></TheSubtitle>
+      <the-title :title="todo.title"></the-title>
+      <the-subtitle :subtitle="todo.time"></the-subtitle>
+      <the-subtitle :subtitle="todo.description"></the-subtitle>
     </div>
     <button class="rounded-full border-2 w-5 h-5 border-black"></button>
   </div>
 </template>
 
 <script>
-import TheTitle from '@/components/atoms/TheTitle/TheTitle';
-import TheSubtitle from '@/components/atoms/TheSubtitle/TheSubtitle';
+import TheTitle from '@/components/atoms/TheTitle/TheTitle.vue';
+import TheSubtitle from '@/components/atoms/TheSubtitle/TheSubtitle.vue';
 
 export default {
   name: 'TheTodo',
@@ -45,5 +45,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
