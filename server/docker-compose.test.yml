@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  knowledge-review-server:
+    container_name: node-server-test
+    command: yarn test
